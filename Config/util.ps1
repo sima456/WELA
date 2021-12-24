@@ -76,7 +76,7 @@ function Check-DateString() {
         default { return "" }
     }
     try {
-        $Date = [DateTime]::ParseExact($DateString, $testFormat,$null)
+        $Date = [DateTime]::ParseExact($DateString, $testFormat, $null)
         return $Date.ToString($DateFormat)
     }
     catch {
