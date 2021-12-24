@@ -381,7 +381,6 @@ function Create-SecurityLogonTimeline {
                     "TargetUserName" { $msgTargetUserName = $data.'#text' }
                     "WorkstationName" { $msgWorkstationName = $data.'#text' }
                     "IpAddress" { $msgIpAddress = $data.'#text' }
-                    "IpPort" { $msgIpPort = $data.'#text' }
                     "TargetLogonID" { $msgTargetLogonID = $data.'#text' }  
                     "SubjectUserSid" { $msgSubjectUserSid = $data.'#text' } 
                     "AuthenticationPackageName" { $msgAuthPackageName = $data.'#text' }
@@ -506,7 +505,6 @@ function Create-SecurityLogonTimeline {
 
             $msgAuthPackageName = "NTLM"
             $msgIpAddress = "-"
-            $msgIpPort = "-"
             $msgProcessName = "-"
 
             if ( $UTC -eq $true ) {
@@ -541,7 +539,6 @@ function Create-SecurityLogonTimeline {
                 
                 $msgWorkstationName = "-"
                 $msgAuthPackageName = "-"
-                $msgIpPort = "-"
                 $msgProcessName = "-"
 
                 if ( $msgIpAddress -ne $Create_LogonTimeline_localComputer ) {
@@ -586,7 +583,6 @@ function Create-SecurityLogonTimeline {
                 $Create_LogonTimeline_isAdmin           = $isAdmin ;
                 $Create_LogonTimeline_SourceWorkstation = $msgWorkstationName ;
                 $Create_LogonTimeline_SourceIpAddress   = $msgIpAddress ;
-                $Create_LogonTimeline_SourceIpPort      = $msgIpPort ;
                 "Process Name"                          = $msgProcessName ;
                 $Create_LogonTimeline_LogonID           = $msgTargetLogonID
             }
@@ -794,7 +790,6 @@ function Create-EasyToReadSecurityLogonTimeline {
                     "ServiceName" { $msgTargetService = $data.'#text' }
                     "TargetDomainName" { $msgTargetDomainName = $data.'#text' }
                     "IPAddress" { $msgIpAddress = $data.'#text' }
-                    "IPPort" { $msgIpPort = $data.'#text' }
                     "Status" { $msgResultCode = $data.'#text' }
                     "PreAuthType" { $msgPreAuthType = $data.'#text' }
                     default { $LogNoise += 1 }
@@ -812,7 +807,7 @@ function Create-EasyToReadSecurityLogonTimeline {
             $TimestampDateTime = [datetime]::ParseExact($TimestampString, $DateFormat, $null) 
             $timestamp = $event.TimeCreated.ToString($DateFormat) 
             $msgStatusReadable = Get-KerberosStatusStr $msgResultCode
-            $printMSG = "4768 - Requested Kerberos authentication ticket(TGT) to Service: $msgTargetService from User: $msgTargetUserName from Domain: $msgTargetDomainName IPAddress: $msgIpAddress Port: $msgIpPort TicketStatus: $msgStatus($msgStatusReadable)";
+            $printMSG = "4768 - Requested Kerberos authentication ticket(TGT) to Service: $msgTargetService from User: $msgTargetUserName from Domain: $msgTargetDomainName IPAddress: $msgIpAddress TicketStatus: $msgStatus($msgStatusReadable)";
             if ($previousMsg -ne $printMSG -and $printMSG -ne "") {
                 if ( $SaveOutput -eq "") {
                     Write-Host $timestamp -NoNewline
@@ -829,8 +824,6 @@ function Create-EasyToReadSecurityLogonTimeline {
                     Write-Host $msgTargetDomainName -NoNewline -ForegroundColor $ParameterColor 
                     Write-Host " IP address: " -NoNewline
                     Write-Host $msgIpAddress -NoNewline -ForegroundColor $ParameterColor
-                    Write-Host " Port: " -NoNewline
-                    Write-Host $msgIpPort -NoNewline -ForegroundColor $ParameterColor
                     Write-Host " " -NoNewline
                     Write-Host " ";
                 }
@@ -850,7 +843,6 @@ function Create-EasyToReadSecurityLogonTimeline {
                     "ServiceName" { $msgTargetService = $data.'#text' }
                     "TargetDomainName" { $msgTargetDomainName = $data.'#text' }
                     "IPAddress" { $msgIpAddress = $data.'#text' }
-                    "IPPort" { $msgIpPort = $data.'#text' }
                     "Status" { $msgResultCode = $data.'#text' }
                     default { $LogNoise += 1 }
                 }
@@ -867,7 +859,7 @@ function Create-EasyToReadSecurityLogonTimeline {
             $TimestampDateTime = [datetime]::ParseExact($TimestampString, $DateFormat, $null) 
             $timestamp = $event.TimeCreated.ToString($DateFormat) 
             $msgStatusReadable = Get-KerberosStatusStr $msgResultCode
-            $printMSG = "4769 - Requested Kerberos service ticket to Service: $msgTargetService from User: $msgTargetUserName IPAddress: $msgIpAddress Port: $msgIpPort TicketStatus: $msgStatus($msgStatusReadable)";
+            $printMSG = "4769 - Requested Kerberos service ticket to Service: $msgTargetService from User: $msgTargetUserName IPAddress: $msgIpAddress TicketStatus: $msgStatus($msgStatusReadable)";
             if ($previousMsg -ne $printMSG -and $printMSG -ne "") {
                 if ( $SaveOutput -eq "") {
                     Write-Host $timestamp -NoNewline
@@ -882,8 +874,6 @@ function Create-EasyToReadSecurityLogonTimeline {
                     Write-Host $msgTargetUserName -NoNewline -ForegroundColor $ParameterColor
                     Write-Host " IP address: " -NoNewline
                     Write-Host $msgIpAddress -NoNewline -ForegroundColor $ParameterColor
-                    Write-Host " Port: " -NoNewline
-                    Write-Host $msgIpPort -NoNewline -ForegroundColor $ParameterColor
                     Write-Host " " -NoNewline
                     Write-Host "";
                 }
@@ -903,7 +893,6 @@ function Create-EasyToReadSecurityLogonTimeline {
                     "TargetUserName" { $msgTargetUserName = $data.'#text' }
                     "WorkstationName" { $msgWorkstationName = $data.'#text' }
                     "IpAddress" { $msgIpAddress = $data.'#text' }
-                    "IpPort" { $msgIpPort = $data.'#text' }
                     "TargetLogonID" { $msgTargetLogonID = $data.'#text' }  
                     default { $LogNoise += 1 }
                 }
@@ -921,10 +910,10 @@ function Create-EasyToReadSecurityLogonTimeline {
                 #IP Address is not blank
 
                 if ( $ShowLogonID -eq $true) {
-                    $printMSG = " 4624 - LOGON Type $msgLogonType ($msgLogonTypeReadable) to User: $msgTargetUserName from Workstation: $msgWorkstationName IP Address: $msgIpAddress Port: $msgIpPort Logon ID: $msgTargetLogonID $msgIsLogonDangerous"
+                    $printMSG = " 4624 - LOGON Type $msgLogonType ($msgLogonTypeReadable) to User: $msgTargetUserName from Workstation: $msgWorkstationName IP Address: $msgIpAddress Logon ID: $msgTargetLogonID $msgIsLogonDangerous"
                 }
                 Else {
-                    $printMSG = " 4624 - LOGON Type $msgLogonType ($msgLogonTypeReadable) to User: $msgTargetUserName from Workstation: $msgWorkstationName IP Address: $msgIpAddress Port: $msgIpPort $msgIsLogonDangerous"
+                    $printMSG = " 4624 - LOGON Type $msgLogonType ($msgLogonTypeReadable) to User: $msgTargetUserName from Workstation: $msgWorkstationName IP Address: $msgIpAddress $msgIsLogonDangerous"
                 }
 
 
@@ -948,8 +937,6 @@ function Create-EasyToReadSecurityLogonTimeline {
                         }
                         Write-Host " IP address: " -NoNewline
                         Write-Host $msgIpAddress -NoNewline -ForegroundColor $ParameterColor
-                        Write-Host " Port: " -NoNewline
-                        Write-Host $msgIpPort -NoNewline -ForegroundColor $ParameterColor
                         if ( $ShowLogonID -eq $true) {
                             Write-Host " Logon ID: " -NoNewline
                             Write-Host $msgTargetLogonID -NoNewline -ForegroundColor $ParameterColor
@@ -1154,7 +1141,6 @@ function Create-EasyToReadSecurityLogonTimeline {
                     "TargetUserName" { $msgTargetUserName = $data.'#text' }
                     "WorkstationName" { $msgWorkstationName = $data.'#text' }
                     "IpAddress" { $msgIpAddress = $data.'#text' }
-                    "IpPort" { $msgIpPort = $data.'#text' }
                     #"FailureReason" { $msgFailureReason = $data.'#text' }
                     "LogonProcessName" { $msgLogonProcessName = $data.'#text' }
                     "AuthenticationPackageName" { $msgAuthenticationPackageName = $data.'#text' }
@@ -1210,7 +1196,7 @@ function Create-EasyToReadSecurityLogonTimeline {
 
             $timestamp = $event.TimeCreated.ToString($DateFormat) 
 
-            $printMSG = " 4625 - FAILED LOGON Type: $msgLogonType ($msgLogonTypeReadable) from User: $msgTargetUserName Workstation: $msgWorkstationName IP Address: $msgIpAddress Port: $msgIpPort Auth: $msgAuthenticationPackageName Reason: $msgFailureReasonReadable"
+            $printMSG = " 4625 - FAILED LOGON Type: $msgLogonType ($msgLogonTypeReadable) from User: $msgTargetUserName Workstation: $msgWorkstationName IP Address: $msgIpAddress Auth: $msgAuthenticationPackageName Reason: $msgFailureReasonReadable"
 
             if ($previousMsg -ne $printMSG -and $printMSG -ne "" -and
                 $msgTargetUserName -ne "-" ) {
@@ -1234,8 +1220,6 @@ function Create-EasyToReadSecurityLogonTimeline {
                     }
                     Write-Host " IP Address: " -NoNewline
                     Write-Host $msgIpAddress -NoNewline -ForegroundColor $ParameterColor
-                    Write-Host " Port: " -NoNewline
-                    Write-Host $msgIpPort -NoNewline -ForegroundColor $ParameterColor
                     Write-Host " Logon Process: " -NoNewline 
                     Write-Host $msgLogonProcessName -NoNewline -ForegroundColor $ParameterColor
                     Write-Host " Auth: " -NoNewline
@@ -1403,7 +1387,6 @@ function Create-EasyToReadSecurityLogonTimeline {
                     "SubjectLogonId" { $msgSubjectLogonId = $data.'#text' } 
                     "TargetServerName" { $msgTargetServerName = $data.'#text' }
                     "IpAddress" { $msgIpAddress = $data.'#text' }
-                    "IpPort" { $msgIpPort = $data.'#text' }
                     "ProcessName" { $msgProcessName = $data.'#text' }
                     
                     default { $LogNoise += 1 }
@@ -1420,10 +1403,10 @@ function Create-EasyToReadSecurityLogonTimeline {
                 $AlertedEvents += 1
        
                 if ( $ShowLogonID -eq $true ) {
-                    $printMSG = " 4648 - EXPLICIT LOGON Subject User: $msgSubjectUserName Target User: $msgTargetUserName Target Server: $msgTargetServerName Target Domain: $msgTargetDomainName IP Address: $msgIpAddress Port: $msgIpPort Logon ID: $msgSubjectLogonId" 
+                    $printMSG = " 4648 - EXPLICIT LOGON Subject User: $msgSubjectUserName Target User: $msgTargetUserName Target Server: $msgTargetServerName Target Domain: $msgTargetDomainName IP Address: $msgIpAddress Logon ID: $msgSubjectLogonId" 
                 }
                 else {
-                    $printMSG = " 4648 - EXPLICIT LOGON Subject User: $msgSubjectUserName Target User: $msgTargetUserName Target Server: $msgTargetServerName Target Domain: $msgTargetDomainName IP Address: $msgIpAddress Port: $msgIpPort"
+                    $printMSG = " 4648 - EXPLICIT LOGON Subject User: $msgSubjectUserName Target User: $msgTargetUserName Target Server: $msgTargetServerName Target Domain: $msgTargetDomainName IP Address: $msgIpAddress"
                 }     
             }
        
@@ -1443,8 +1426,6 @@ function Create-EasyToReadSecurityLogonTimeline {
                     Write-Host $msgTargetDomainName -NoNewline -ForegroundColor $ParameterColor
                     Write-Host " IP Address: " -NoNewline
                     Write-Host $msgIpAddress -NoNewline -ForegroundColor $ParameterColor
-                    Write-Host " Port: " -NoNewline
-                    Write-Host $msgIpPort -NoNewline -ForegroundColor $ParameterColor
                     Write-Host " Process: " -NoNewline
                     Write-Host $msgProcessName -NoNewline  -ForegroundColor $ParameterColor
                     if ( $ShowLogonID -eq $true ) {
