@@ -83,22 +83,22 @@ You will need local Administrator access for live analysis.
 
 ### Show event ID statistics to get a grasp of what kind of events there are:
 ```powershell
-    ./WELA.ps1 -LogFile .\Security.evtx -EventIDStatistics
+./WELA.ps1 -LogFile .\Security.evtx -EventIDStatistics
 ```
 
 ### Create a timeline via offline analysis outputted to a GUI in UTC time:
 ```powershell
-    .\WELA.ps1 -LogFile .\Security.evtx -LogonTimeline -OutputGUI -UTC
+.\WELA.ps1 -LogFile .\Security.evtx -LogonTimeline -OutputGUI -UTC
 ```
 
 ### Analyze NTLM Operational logs for NTLM usage before disabling it:
 ```powershell
-    .\WELA.ps1 -LogFile .\DC1-NTLM-Operational.evtx -AnalyzeNTLM_UsageBasic 
+.\WELA.ps1 -LogFile .\DC1-NTLM-Operational.evtx -AnalyzeNTLM_UsageBasic 
 ```
 
 ### Security logon statistics on a live machine:
 ```powershell
-    .\WELA.ps1 -LiveAnalysis -SecurityAuthenticationSummary
+.\WELA.ps1 -LiveAnalysis -SecurityAuthenticationSummary
 ```
 
 ## Screenshots
