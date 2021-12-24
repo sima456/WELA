@@ -28,10 +28,7 @@ Tested on Windows Powershell 5.1 but may work with previous versions. It will un
  - Event ID Statistics
  - Output to CSV to analyze in Timeline Explorer, etc...
  - Analyze NTLM usage before disabling NTLM
-
-## Planned Features
-
- - SIGMA rule support
+ - Sigma rules
  - Custom attack detection rules
  - Remote analysis
  - Logon Statistics
@@ -41,9 +38,12 @@ Tested on Windows Powershell 5.1 but may work with previous versions. It will un
 At the moment, please use a Windows Powershell 5.1.
 You will need local Administrator access for live analysis.
 
+```powershell
     Analysis Source (Specify one):
         -LiveAnalysis : Creates a timeline based on the live host's log
         -LogFile <path-to-logfile> : Creates a timelime from an offline .evtx file
+        -LogDirectory <path-to-logfiles> (Warning: not fully implemented.) : Analyze offline .evtx files
+        -RemoteLiveAnalysis : Creates a timeline based on the remote host's log
 
     Analysis Type (Specify one):
         -AnalyzeNTLM_UsageBasic : Returns basic NTLM usage based on the NTLM Operational log
@@ -77,34 +77,55 @@ You will need local Administrator access for live analysis.
     Other:
         -ShowContributors : Show the contributors
         -QuietLogo : Do not display the WELA logo
+```
 
 ## Useful Options
 
-Show event ID statistics to get a grasp of what kind of events there are:
+### Show event ID statistics to get a grasp of what kind of events there are:
+```powershell
+    ./WELA.ps1 -LogFile .\Security.evtx -EventIDStatistics
+```
 
-    .\WELA.ps1 -EventID_Statistics
-
-Create a timeline via offline analysis outputted to a GUI in UTC time:
-
+### Create a timeline via offline analysis outputted to a GUI in UTC time:
+```powershell
     .\WELA.ps1 -LogFile .\Security.evtx -LogonTimeline -OutputGUI -UTC
+```
 
-Analyze NTLM Operational logs for NTLM usage before disabling it:
+### Analyze NTLM Operational logs for NTLM usage before disabling it:
+```powershell
+    .\WELA.ps1 -LogFile .\DC1-NTLM-Operational.evtx -AnalyzeNTLM_UsageBasic 
+```
 
-    .\WELA.ps1 -AnalyzeNTLM_UsageBasic -LogFile .\DC1-NTLM-Operational.evtx
+### Security logon statistics on a live machine:
+```powershell
+    .\WELA.ps1 -LiveAnalysis -SecurityAuthenticationSummary
+```
 
 ## Screenshots
 
-Logon Timeline GUI:
+### Logon Timeline GUI:
 
 ![Logon Timeline GUI](/Screenshots/Screenshot-LogonTimelineGUI.png)
 
-Event ID Statistics:
+### Human Readable Timeline:
+
+![Logon Timeline GUI](/Screenshots/Screenshot-HumanReadableTimeline.png)
+
+### Logon Type Statistics:
+
+![Logon Statistics](/Screenshots/Screenshot-LogonStatistics.png)
+
+### Event ID Statistics:
 
 ![Event ID Statistics](/Screenshots/Screenshot-EventIDStatistics.png)
 
-Logon Type Summary:
+### Logon Type Summary:
 
 ![Logon Type Summary](/Screenshots/Screenshot-LogonTypeSummary.png)
+
+### NTLM Authentication Analysis:
+
+![Logon Type Summary](/Screenshots/Screenshot-NTLM-Statistics-EN.png)
 
 ## Related Windows Event Log Threat Hunting Projects
 
@@ -117,6 +138,6 @@ Logon Type Summary:
 - [so-import-evtx](https://docs.securityonion.net/en/2.3/so-import-evtx.html) Import evtx files into Security Onion.
 - [Zircolite](https://github.com/wagga40/Zircolite) SIGMA based attack detection tool written in Python.
 
-## Contributing
+## Contribution
 
 We would love any form of contributing. Pull requests are the best but feature requests, notifying us of bugs, etc... are also very welcome.

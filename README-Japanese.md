@@ -28,9 +28,6 @@ Windows Powershell 5.1で動作確認済みですが、以前のバージョン�
  - イベントIDの集計
  - Timeline Explorer等で解析するためのCSV出力
  - NTLM認証を無効にする前に使用の確認
-
-## 予定している機能
-
  - SIGMAルールの対応
  - カスタムな攻撃検知のルール
  - リモート解析
@@ -41,9 +38,12 @@ Windows Powershell 5.1で動作確認済みですが、以前のバージョン�
 現在、Windows Powershell 5.1にしか対応していません。
 ライブ調査を行う場合はローカル管理者権限が必用です。
 
+```powershell
     解析ソースを一つ指定して下さい：
         -LiveAnalysis : ホストOSのログでタイムラインを作成する
         -LogFile <ログファイルのパス> : オフラインの.evtxファイルでタイムラインを作成する
+        -LogDirectory <ログファイルのディレクトリのパス> (未完成) : 複数のオフラインの.evtxファイルを解析する
+        -RemoteLiveAnalysis : リモートマシンのログでタイムラインを作成する
 
     解析タイプを一つ指定して下さい:
         -AnalyzeNTLM_UsageBasic : NTLM Operationalログを解析し、NTLM認証の使用を簡潔に出力する
@@ -77,34 +77,55 @@ Windows Powershell 5.1で動作確認済みですが、以前のバージョン�
     その他:
         -ShowContributors : コントリビューターの一覧表示
         -QuietLogo : ロゴを表示させずに実行する
+```
 
 ## 便利な機能
 
 どのようなイベントがあるかを把握するためにまずイベントIDを集計する：
-
-    ./WELA.ps1 -EventIDStatistics
+```powershell
+./WELA.ps1 -LogFile .\Security.evtx -EventIDStatistics
+```
 
 オフライン解析でタイムラインを作成して、UTC時間でGUIで表示する：
-
-    .\WELA.ps1 -LogFile .\Security.evtx -LogonTimeline -OutputGUI -UTC
+```powershell
+.\WELA.ps1 -LogFile .\Security.evtx -LogonTimeline -OutputGUI -UTC
+```
 
 NTLM認証を無効にする前に使用を確認する:
+```powershell
+.\WELA.ps1 -AnalyzeNTLM_UsageBasic -LogFile .\DC1-NTLM-Operational.evtx
+```
 
-    .\WELA.ps1 -AnalyzeNTLM_UsageBasic -LogFile .\DC1-NTLM-Operational.evtx
+セキュリティログオンタイプの集計:
+```powershell
+.\WELA.ps1 -LogFile .\Security.evtx -SecurityAuthenticationSummary
+```
 
 ## スクリーンショット
 
-ログオンタイムラインのGUI:
+### ログオンタイムラインのGUI:
 
 ![Logon Timeline GUI](/Screenshots/Screenshot-LogonTimelineGUI.png)
 
-イベントID集計:
+### Human readableタイムライン:
 
-![Event ID Statistics](/Screenshots/Screenshot-EventIDStatistics.png)
+![Logon Timeline GUI](/Screenshots/Screenshot-HumanReadableTimeline.png)
 
-ログオンタイプのサマリ:
+ログオンタイプ集計:
+
+![Logon type statistics](/Screenshots/Screenshot-LogonStatisticsJP.png)
+
+### イベントID集計:
+
+![Event ID Statistics](/Screenshots/Screenshot-LogonStatisticsJP.png)
+
+### ログオンタイプのサマリ:
 
 ![Logon Type Summary](/Screenshots/Screenshot-LogonTypeSummary.png)
+
+### NTLM認証の分析:
+
+![Logon Type Summary](/Screenshots/Screenshot-NTLM-Statistics-JP.png)
 
 ## 関連するWindowsイベントログのスレットハンティングプロジェクト
 

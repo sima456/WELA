@@ -397,7 +397,7 @@ $Error_Incorrect_EndTimeline = "Error: 「EndTimeline」の読み込みに失敗
 $Create_SecurityAuthenticationSummary_Welcome_Message = "ログオン試行イベントをログオンタイプおよびユーザごとに集計します。"
 $Create_SecurityAuthenticationSummary_NoMatch_Message = "このイベントタイプのイベントはありませんでした。"
 $Create_SecurityAuthenticationSummary_OutputCSV_Message = "集計結果を {0} に出力しました。"
-$Create_AuthenticationSummary_LogonType_Format = "Type{0}_({1})"
+$Create_AuthenticationSummary_LogonType_Format = "{0}-{1}"
 
 #Remote live analysis
 $remoteAnalysis_getComputername = "リモートコンピュータのマシン名（IPアドレス or ホスト名）を入力してください "

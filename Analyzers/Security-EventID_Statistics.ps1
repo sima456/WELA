@@ -73,7 +73,7 @@
                 
         $Name = $sorted[$i].Name
         $Value = $sorted[$i].Value
-        $EventInfo = EventInfo($Name)
+        $EventInfo = EventInfo($Name) #Gave lots of errors
         $PercentOfLogs = [math]::Round( ( $Value / $TotalNumberOfLogs * 100 ), 1 )
         $CountPlusPercent = "$value ($PercentOfLogs%)" 
         $val = [pscustomobject]@{$Create_SecurityEventIDStatistics_Count = $CountPlusPercent ; $Create_SecurityEventIDStatistics_ID = $Name ; $Create_SecurityEventIDStatistics_Event = $EventInfo.EventTitle ; $Create_SecurityEventIDStatistics_TimelineOutput = $EventInfo.TimelineDetect } #; $Create_SecurityEventIDStatistics_Comment = $EventInfo.Comment

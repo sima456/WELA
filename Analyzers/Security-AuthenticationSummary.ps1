@@ -1,5 +1,6 @@
 ﻿function Logon-Number-To-HeaderValue($msgLogonType) {
-    $Header_Format = "Type{0}_({1})"
+    #$Header_Format = "{0}_({1})"
+    $Header_Format = "Type {0}"
     switch ( $msgLogonType ) {
         "0" { $HeaderValue = [string]::Format($Header_Format,$msgLogonType,"System") }
         "2" { $HeaderValue = [string]::Format($Header_Format,$msgLogonType,"Interactive") }
