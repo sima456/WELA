@@ -132,9 +132,10 @@ NTLM認証を無効にする前に使用を確認する:
 - [APT-Hunter](https://github.com/ahmedkhlief/APT-Hunter) - Pythonで書かれた攻撃検知ツール。
 - [Chainsaw](https://github.com/countercept/chainsaw) - Rustで書かれたSIGMAベースの攻撃検知ツール。
 - [DeepBlueCLI](https://github.com/sans-blue-team/DeepBlueCLI) - Powershellで書かれた攻撃検知ツール。
-- [EVTX ATTACK Samples](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES) - 攻撃の痕跡が入っているEVTXサンプルファイルのリポジトリ。作者： [SBousseaden](https://twitter.com/SBousseaden)
+- [EVTX ATTACK Samples](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES) - [SBousseaden](https://twitter.com/SBousseaden)による攻撃痕跡が入っているEVTXサンプルファイルのリポジトリ。
+- [Hayabusa](https://github.com/Yamato-Security/hayabusa/blob/main/README-Japanese.md) [Yamato Security](https://github.com/Yamato-Security/)によるSigmaルール対応の攻撃検知＋フォレンジックタイムライン作成ツール。
 - [RustyBlue](https://github.com/Yamato-Security/RustyBlue) - DeepBlueCLIをRustに書き換えたツール。
-- [SIGMA](SIGMA: https://github.com/SigmaHQ/sigma) - SIEM等のジェネリックな攻撃検知ルール。
+- [Sigma](https://github.com/SigmaHQ/sigma) - SIEM等のジェネリックな攻撃検知ルール。
 - [so-import-evtx](https://docs.securityonion.net/en/2.3/so-import-evtx.html) - evtxファイルをSecurity Onionにインポートするコマンド。
 - [Zircolite](https://github.com/wagga40/Zircolite) - Pythonで書かれたSIGMAベースの攻撃検知ツール。
 
