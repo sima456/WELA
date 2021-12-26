@@ -133,7 +133,7 @@ NTLM認証を無効にする前に使用を確認する:
 - [Chainsaw](https://github.com/countercept/chainsaw) - Rustで書かれたSIGMAベースの攻撃検知ツール。
 - [DeepBlueCLI](https://github.com/sans-blue-team/DeepBlueCLI) - Powershellで書かれた攻撃検知ツール。
 - [EVTX ATTACK Samples](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES) - [SBousseaden](https://twitter.com/SBousseaden)による攻撃痕跡が入っているEVTXサンプルファイルのリポジトリ。
-- [Hayabusa](https://github.com/Yamato-Security/hayabusa/blob/main/README-Japanese.md) [Yamato Security](https://github.com/Yamato-Security/)によるSigmaルール対応の攻撃検知＋フォレンジックタイムライン作成ツール。
+- [Hayabusa](https://github.com/Yamato-Security/hayabusa/blob/main/README-Japanese.md) - [Yamato Security](https://github.com/Yamato-Security/)によるSigmaルール対応の攻撃検知＋フォレンジックタイムライン作成ツール。
 - [RustyBlue](https://github.com/Yamato-Security/RustyBlue) - DeepBlueCLIをRustに書き換えたツール。
 - [Sigma](https://github.com/SigmaHQ/sigma) - SIEM等のジェネリックな攻撃検知ルール。
 - [so-import-evtx](https://docs.securityonion.net/en/2.3/so-import-evtx.html) - evtxファイルをSecurity Onionにインポートするコマンド。
