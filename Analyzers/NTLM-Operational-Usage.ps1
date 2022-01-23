@@ -132,7 +132,7 @@ function Analyze-NTLMOperationalBasic {
     }
     Write-Host "$Create_EventIDStatistics_LastEvent $LastEventTime"
 
-    $logs = Get-WinEvent -FilterHashtable $WineventFilter -Oldest
+    $logs = Get-WinEventWithFilter -WinEventFilter $WineventFilter  #Load event logs into memory.
     $eventlist = @{}
     $8001_NumberOfLogs = 0
     $8002_NumberOfLogs = 0

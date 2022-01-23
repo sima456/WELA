@@ -33,7 +33,7 @@
     }
 
     $WineventFilter.Add( "Path", $filePath ) 
-    $logs = Get-WinEvent -FilterHashtable $WineventFilter -Oldest
+    $logs = Get-WinEventWithFilter -WinEventFilter $WineventFilter  #Load event logs into memory.
     $eventlist = @{}
     $TotalNumberOfLogs = 0
 
