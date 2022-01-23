@@ -165,7 +165,7 @@ function Create-SecurityLogonTimeline {
     Write-Host $Create_LogonTimeline_PleaseWait
     Write-Host ""
 
-    $logs = Get-WinEvent -FilterHashtable $WineventFilter -Oldest #Load event logs into memory.
+    $logs = Get-WinEventWithFilter -WinEventFilter $WineventFilter #Load event logs into memory.
     $eventlist = @{}
 
     [System.Collections.ArrayList]$LogoffEventArray = @()
