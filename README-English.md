@@ -40,24 +40,27 @@ You will need local Administrator access for live analysis.
 
 ```powershell
     Analysis Source (Specify one):
-        -LiveAnalysis : Creates a timeline based on the live host's log
-        -LogFile <path-to-logfile> : Creates a timelime from an offline .evtx file
+        -LiveAnalysis : Analyze logs from the live host
+        -LogFile <path-to-logfile> : Analyze an offline .evtx file
         -LogDirectory <path-to-logfiles> (Warning: not fully implemented.) : Analyze offline .evtx files
         -RemoteLiveAnalysis : Creates a timeline based on the remote host's log
 
     Analysis Type (Specify one):
         -AnalyzeNTLM_UsageBasic : Returns basic NTLM usage based on the NTLM Operational log
         -AnalyzeNTLM_UsageDetailed : Returns detailed NTLM usage based on the NTLM Operational log
-        -EventID_Statistics : Output event ID statistics
-        -LogonTimeline : Output a condensed timeline of user logons based on the Security log
+        -SecurityEventID_Statistics : Output Security log event ID statistics
+        -EasyToReadSecurityLogonTimeline : Output a very easy-to-read timeline of user logons based on the Security log
+        -SecurityLogonTimeline : Output a condensed timeline of user logons based on the Security log
         -SecurityAuthenticationSummary : Output a summary of authentication events for each logon type based on the Security log
 
     Analysis Options:
         -StartTimeline "<YYYY-MM-DD HH:MM:SS>" : Specify the start of the timeline
         -EndTimeline "<YYYY-MM-DD HH:MM:SS>" : Specify the end of the timeline
 
-    -LogonTimeline Analysis Options:
+    -SecurityLogonTimeline Analysis Options:
         -IsDC : Specify if the logs are from a DC
+        -UseDetectRule <preset-rule | path-to-ruledirectory>(Default: preset-rule='0')：Specify detected event output on Rule Base
+        preset-rule| 0:None 1: DeepBlueCLI 2:SIGMA all:all-preset
 
     Output Types (Default: Standard Output):
         -SaveOutput <outputfile-path> : Output results to a text file
@@ -68,6 +71,7 @@ You will need local Administrator access for live analysis.
         -USDateFormat : Output the dates in MM-DD-YYYY format (Default: YYYY-MM-DD)
         -EuropeDateFormat : Output the dates in DD-MM-YYYY format (Default: YYYY-MM-DD)
         -UTC : Output in UTC time (default is the local timezone)
+        -English : Output in English
         -Japanese : Output in Japanese
 
     -LogonTimeline Output Options:

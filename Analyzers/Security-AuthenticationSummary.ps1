@@ -106,7 +106,7 @@ function Create-SecurityAuthenticationSummary {
     initialize_AuthenticationSummary
 
     $WineventFilter.Add( "Path", $filePath)
-    $logs = Get-WinEvent -FilterHashtable $WineventFilter -Oldest #Load event logs into memory.
+    $logs = Get-WinEventWithFilter -WinEventFilter $WineventFilter  #Load event logs into memory.
 
     If ( $logs.length -eq 0 ) {
         Write-Host $Info_GetEventNoMatch -ForegroundColor Green

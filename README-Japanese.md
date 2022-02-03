@@ -40,24 +40,27 @@ Windows Powershell 5.1で動作確認済みですが、以前のバージョン�
 
 ```powershell
     解析ソースを一つ指定して下さい：
-        -LiveAnalysis : ホストOSのログでタイムラインを作成する
-        -LogFile <ログファイルのパス> : オフラインの.evtxファイルでタイムラインを作成する
+        -LiveAnalysis : ホストOSのログを解析する
+        -LogFile <ログファイルのパス> : オフラインの.evtxファイルを解析する
         -LogDirectory <ログファイルのディレクトリのパス> (未完成) : 複数のオフラインの.evtxファイルを解析する
         -RemoteLiveAnalysis : リモートマシンのログでタイムラインを作成する
 
     解析タイプを一つ指定して下さい:
         -AnalyzeNTLM_UsageBasic : NTLM Operationalログを解析し、NTLM認証の使用を簡潔に出力する
         -AnalyzeNTLM_UsageDetailed : NTLM Operationalログを解析し、NTLM認証の使用を詳細に出力する
-        -EventIDStatistics : イベントIDの集計情報を出力する
-        -LogonTimeline : ユーザログオンの簡単なタイムラインを出力する
-        -SecurityAuthenticationSummary : ログオンタイプごとの集計情報を出力する
+        -SecurityEventID_Statistics : セキュリティログのイベントIDの集計情報を出力する
+        -EasyToReadSecurityLogonTimeline : セキュリティログからユーザログオンの読みやすいタイムラインを出力する
+        -SecurityLogonTimeline : セキュリティログからユーザログオンの簡単なタイムラインを出力する
+        -SecurityAuthenticationSummary : セキュリティログからログオンタイプごとの集計情報を出力する
 
     解析オプション:
         -StartTimeline "<YYYY-MM-DD HH:MM:SS>" : タイムラインの始まりを指定する
         -EndTimeline "<YYYY-MM-DD HH:MM:SS>" : タイムラインの終わりを指定する
 
-    -LogonTimelineの解析オプション:
+    -SecurityLogonTimelineの解析オプション:
         -IsDC : ドメインコントローラーのログの場合は指定して下さい
+        -UseDetectRule <preset rule | path-to-ruledirectory>(Default:preset rule='0')：検知ルールに該当するイベントの出力を行う
+        preset rule| 0:None 1: DeepBlueCLI 2:SIGMA all:all-preset
 
     出力方法（デフォルト：標準出力）:
         -SaveOutput <出力パス> : テキストファイルに出力する
@@ -68,6 +71,7 @@ Windows Powershell 5.1で動作確認済みですが、以前のバージョン�
         -USDateFormat : 日付をMM-DD-YYYY形式で出力する (デフォルト： YYYY-MM-DD)
         -EuropeDateFormat : 日付をDD-MM-YYYY形式で出力する (デフォルト： YYYY-MM-DD)
         -UTC : 時間をUTC形式で出力する。（デフォルトはローカルタイムゾーン）
+        -English : 英語で出力する
         -Japanese : 日本語で出力する
 
     -LogonTimelineの出力オプション:
