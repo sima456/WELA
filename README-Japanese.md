@@ -4,7 +4,7 @@
     <h1>
       WELA (Windows Event Log Analyzer) ゑ羅（ウェラ）
     </h1>
-    [<a href="README.md">English</a>] | [<a href="README-Japanese.md">日本語</a>]
+    [<a href="README.md">English</a>] | [<b>日本語</b>]
  </p>
 </div>
 
