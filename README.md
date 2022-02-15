@@ -1,7 +1,6 @@
 <div align="center">
  <p>
-
-  ![WELA Logo](WELA-Logo.png)
+    <img alt="WELA Logo" src="WELA-Logo.png" width="20%">
   <h1>
    WELA (Windows Event Log Analyzer) ゑ羅
   </h1>

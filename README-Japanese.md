@@ -1,12 +1,10 @@
 <div align="center">
- <p>
-
-  ![WELA Logo](WELA-Logo.png)
-  <h1>
-   WELA (Windows Event Log Analyzer) ゑ羅（ウェラ）
-  </h1>
-     [<a href="README.md">English</a>] | [<a href="README-Japanese.md">日本語</a>]
-
+  <p>
+    <img alt="WELA Logo" src="WELA-Logo.png" width="20%">
+    <h1>
+      WELA (Windows Event Log Analyzer) ゑ羅（ウェラ）
+    </h1>
+    [<a href="README.md">English</a>] | [<a href="README-Japanese.md">日本語</a>]
  </p>
 </div>
 
