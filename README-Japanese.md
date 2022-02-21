@@ -1,12 +1,19 @@
 <div align="center">
- <p>
-
-  ![WELA Logo](WELA-Logo.png)
-  <h1>
-   WELA (Windows Event Log Analyzer) ゑ羅（ウェラ）
-  </h1>
+  <p>
+    <img alt="WELA Logo" src="WELA-Logo.png" width="20%">
+    <h1>
+      WELA (Windows Event Log Analyzer) ゑ羅（ウェラ）
+    </h1>
+    [<a href="README.md">English</a>] | [<b>日本語</b>]
  </p>
 </div>
+
+---
+
+[tag-1]: https://img.shields.io/github/stars/Yamato-Security/wela?style=plastic&label=GitHub%F0%9F%AA%9FStars
+[tag-2]: https://img.shields.io/github/v/release/Yamato-Security/wela?display_name=tag&label=latest-version&style=plastic
+
+![tag-1] ![tag-2]
 
 Yamato SecurityのWELA(Windows Event Log Analyzer)(ゑ羅(ウェラ))は、Windowsイベントログの様々な解析のためのマルチツールを目指しています。
 現在、WELAの一番の機能は、迅速なフォレンジック調査とインシデントレスポンスを支援するために、分析しやすいログオンタイムラインを作成することです。
