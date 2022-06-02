@@ -25,7 +25,7 @@ Tested on Windows Powershell 5.1 but may work with previous versions. It will un
 ## Features
 
  - Written in PowerShell so is easy to read and customize.
- - Fast Forenscis Logon Timeline Generator
+ - Fast Forensics Logon Timeline Generator
    - Detect lateral movement, system usage, suspicious logons, vulnerable protocol usage, etc...
    - 90%+ noise reduction for logon events
    - Calculate Logon Elapsed Time
