@@ -680,7 +680,7 @@ function Create-EasyToReadSecurityLogonTimeline {
     Write-Host
 
     try {
-        $logs = iex "Get-WinEvent $filter -Oldest -ErrorAction Stop"
+        $logs = Invoke-Expression "Get-WinEvent $filter -Oldest -ErrorAction Stop"
 
     }
     catch {
@@ -1287,8 +1287,7 @@ function Create-EasyToReadSecurityLogonTimeline {
                 Else {
                     Write-Output "$timestamp $printMSG" | Out-File $SaveOutput -Append
                 }      
-            }   
-       
+            }
         }  
 
         #Logon using explicit credentials
