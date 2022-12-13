@@ -92,7 +92,7 @@ You will need local Administrator access for live analysis.
 
 ### Show event ID statistics to get a grasp of what kind of events there are:
 ```powershell
-./WELA.ps1 -LogFile .\Security.evtx -EventID_Statistics
+./WELA.ps1 -LogFile .\Security.evtx -SecurityEventID_Statistics
 ```
 
 ### Create a timeline via offline analysis outputted to a GUI in UTC time:
