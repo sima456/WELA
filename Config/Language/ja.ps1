@@ -356,14 +356,14 @@ $Create_LogonTimeline_NoLogoffEvent = "ログオフイベント無し"
 $Create_LogonTimeline_Total_Logon_Event_Records = "ログオンイベントの合計: "
 $Create_LogonTimeline_Data_Reduction = "ログイベントのデータ削減率: "
 $Create_LogonTimeline_Total_Filtered_Logons = "フィルタ済のログオンイベント: "
-$Create_LogonTimeline_Type0 =  "タイプ  0 システムログオン（端末の起動時間): "
-$Create_LogonTimeline_Type2 =  "タイプ  2 インタラクティブログオン (例：コンソール、VNC等) (注意：認証情報がメモリに格納されて、盗まれる危険性がある。):"
-$Create_LogonTimeline_Type3 =  "タイプ  3 ネットワークログオン (例：SMB共有、netコマンド、rpcclient、psexec、winrm等々):"
-$Create_LogonTimeline_Type4 =  "タイプ  4 バッチログオン (例：スケジュールされたタスク):"
-$Create_LogonTimeline_Type5 =  "タイプ  5 サービスログオン:"
-$Create_LogonTimeline_Type7 =  "タイプ  7 ロック解除（またはRDPの再接続)のログオン:"
-$Create_LogonTimeline_Type8 =  "タイプ  8 平文のネットワークログオン (例：IISのBasic認証)(注意：ハッシュ化されていないパスワードが使用されている。):"
-$Create_LogonTimeline_Type9 =  "タイプ  9 新しい認証情報でのログオン (例：「runas /netonly」のコマンド)(注意：認証情報がメモリに格納されて、盗まれる危険性がある。):"
+$Create_LogonTimeline_Type0 = "タイプ  0 システムログオン（端末の起動時間): "
+$Create_LogonTimeline_Type2 = "タイプ  2 インタラクティブログオン (例：コンソール、VNC等) (注意：認証情報がメモリに格納されて、盗まれる危険性がある。):"
+$Create_LogonTimeline_Type3 = "タイプ  3 ネットワークログオン (例：SMB共有、netコマンド、rpcclient、psexec、winrm等々):"
+$Create_LogonTimeline_Type4 = "タイプ  4 バッチログオン (例：スケジュールされたタスク):"
+$Create_LogonTimeline_Type5 = "タイプ  5 サービスログオン:"
+$Create_LogonTimeline_Type7 = "タイプ  7 ロック解除（またはRDPの再接続)のログオン:"
+$Create_LogonTimeline_Type8 = "タイプ  8 平文のネットワークログオン (例：IISのBasic認証)(注意：ハッシュ化されていないパスワードが使用されている。):"
+$Create_LogonTimeline_Type9 = "タイプ  9 新しい認証情報でのログオン (例：「runas /netonly」のコマンド)(注意：認証情報がメモリに格納されて、盗まれる危険性がある。):"
 $Create_LogonTimeline_Type10 = "タイプ 10 リモートインタラクティブのログオン (例：RDP) (注意：認証情報がメモリに格納されて、盗まれる危険性がある。):"
 $Create_LogonTimeline_Type11 = "タイプ 11 キャッシュされた認証情報によるインタラクティブログオン (例：DCに接続できない場合):"
 $Create_LogonTimeline_Type12 = "タイプ 12 キャッシュされた認証情報によるリモートインタラクティブログオン (例：キャッシュされた認証情報によるRDP、Microsoftライブアカウントの使用):"
@@ -522,6 +522,7 @@ $Show_Contributors2 =
 ogino(GitHub:@oginoPmP) - 開発
 DustInDark(GitHub:@hitenkoku) - ローカライゼーション、和訳
 つぼっく(twitter: @ytsuboi0322) - 和訳
+fukusuket
 秀真（ほつま） - アート
 
 コントリビュータを募集しています！
