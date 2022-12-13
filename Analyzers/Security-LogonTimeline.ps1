@@ -680,7 +680,7 @@ function Create-EasyToReadSecurityLogonTimeline {
     Write-Host
 
     try {
-        $logs = Invoke-Expression "Get-WinEvent $filter -Oldest -ErrorAction Stop"
+        $logs = Invoke-Expression "Get-WinEvent $filter -Oldest -ErrorAction SilentlyContinue"
 
     }
     catch {

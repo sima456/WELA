@@ -56,7 +56,7 @@ function SecureChannelTypeLookup ($secureChannelType) {
         "5" { $return = "Uas Server (Secure channel between a LAN Manager server to DC. Shouldn't be used.)" }
         "6" { $return = "Server (Secure channel from backup DC to primary DC.)" }
         "7" { $return = "Cdc (Secure channel from Read-Only DC (RODC) to DC.)" }
-        else { $return = "Unknown."}
+        else { $return = "Unknown." }
     }
     return  $return
 }
@@ -103,8 +103,8 @@ function Analyze-NTLMOperationalBasic {
     Write-Host
 
     #Check to see if log is empty
-    try { $newestEvent = Get-WinEvent -FilterHashtable $WineventFilter -MaxEvents 1 -ErrorAction Stop }
-    catch [Exception]{
+    try { $newestEvent = Get-WinEvent -FilterHashtable $WineventFilter -MaxEvents 1 -ErrorAction SilentlyContinue }
+    catch [Exception] {
         if ($_.Exception -match "No events were found that match the specified selection criteria") {
             Write-Host $Error_NoEventsFound
             Write-Host
@@ -379,8 +379,8 @@ function Analyze-NTLMOperationalDetailed {
     Write-Host
 
     #Check to see if log is empty
-    try { $newestEvent = Get-WinEvent -FilterHashtable $WineventFilter -MaxEvents 1 -ErrorAction Stop }
-    catch [Exception]{
+    try { $newestEvent = Get-WinEvent -FilterHashtable $WineventFilter -MaxEvents 1 -ErrorAction SilentlyContinue }
+    catch [Exception] {
         if ($_.Exception -match "No events were found that match the specified selection criteria") {
             Write-Host $Error_NoEventsFound
             Write-Host
@@ -500,8 +500,8 @@ function Analyze-NTLMOperationalDetailed {
             }
             
             $tempoutput = [Ordered]@{ 
-                "RemoteServer"     = $8004_msgSChannelName.ToLower() ;
-                "Username"              = $8004_msgUserName.ToLower() ;
+                "RemoteServer" = $8004_msgSChannelName.ToLower() ;
+                "Username"     = $8004_msgUserName.ToLower() ;
                 "SourceClient" = $8004_msgWorkstationName.ToLower()
 
             }
