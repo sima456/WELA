@@ -522,6 +522,7 @@ $Show_Contributors2 =
 ogino(GitHub:@oginoPmP) - 開発
 DustInDark(GitHub:@hitenkoku) - ローカライゼーション、和訳
 つぼっく(twitter: @ytsuboi0322) - 和訳
+fukusuket
 秀真（ほつま） - アート
 
 コントリビュータを募集しています！
