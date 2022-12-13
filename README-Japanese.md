@@ -94,7 +94,7 @@ Windows Powershell 5.1で動作確認済みですが、以前のバージョン�
 
 どのようなイベントがあるかを把握するためにまずイベントIDを集計する：
 ```powershell
-./WELA.ps1 -LogFile .\Security.evtx -EventID_Statistics
+./WELA.ps1 -LogFile .\Security.evtx -SecurityEventID_Statistics
 ```
 
 オフライン解析でタイムラインを作成して、UTC時間でGUIで表示する：

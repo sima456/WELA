@@ -272,7 +272,7 @@ if ( $LiveAnalysis -eq $true -and ($LogFile -ne "" -or $LogDirectory -ne "")) {
 }
 
 # Show-Helpは各言語のModuleに移動したためShow-Help関数は既に指定済みの言語の内容となっているため言語設定等の参照は行わない
-if ( $LiveAnalysis -eq $false -and $RemoteLiveAnalysis -eq $false -and $LogFile -eq "" -and $SecurityEventID_Statistics -eq $false -and $SecurityLogonTimeline -eq $false -and $AccountInformation -eq $false -and $AnalyzeNTLM_UsageBasic -eq $false -and $AnalyzeNTLM_UsageDetailed -eq $false -and $SecurityAuthenticationSummary -eq $false) {
+if ( $LiveAnalysis -eq $false -and $RemoteLiveAnalysis -eq $false -and $LogFile -eq "" -and $LogDirectory -eq "" -and $SecurityEventID_Statistics -eq $false -and $SecurityLogonTimeline -eq $false -and $AccountInformation -eq $false -and $AnalyzeNTLM_UsageBasic -eq $false -and $AnalyzeNTLM_UsageDetailed -eq $false -and $SecurityAuthenticationSummary -eq $false) {
 
     Show-Help
     exit
@@ -330,14 +330,12 @@ if ( $LiveAnalysis -eq $true -or $RemoteLiveAnalysis -eq $true ) {
 }
 # -LogDirectory
 elseif ( $LogDirectory -ne "" ) {
-
     if ($LogFile -ne "") {
         Write-Host
         Write-Host $Error_InCompatible_LogDirAndFile -ForegroundColor White -BackgroundColor Red
         Write-Host 
         exit
     }
-    
     Get-ChildItem -Filter *.evtx -Recurse -Path $LogDirectory | ForEach-Object { [void]$evtxFiles.Add($_.FullName) }
 }
 
@@ -393,7 +391,7 @@ if ($ruleStack.Count -ne 0) {
         $WineventFilter = @{}
         $WineventFilter.Add( "Path", $LogFile ) 
         # write-host "execute rule to $LogFile"
-        $logs = Get-WinEventWithFilter -WinEventFilter $WineventFilter -RemoteComputerInfo $RemoteComputerInfo
+        $logs = Get-WinEventWithFilter -WinEventFilter $WineventFilter -RemoteComputerInfo $RemoteComputerInfo -ErrorAction SilentlyContinue
         foreach ($rule in $ruleStack.keys) {
             #write-host "execute rule:$rule"
             Invoke-Command -scriptblock $ruleStack[$rule] -ArgumentList @($logs)
