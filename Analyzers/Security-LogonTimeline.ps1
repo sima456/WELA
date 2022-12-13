@@ -1370,8 +1370,17 @@ function Create-EasyToReadSecurityLogonTimeline {
     }
 
     $GoodData = $TotalPiecesOfData - $LogNoise
-    $LogEventDataReduction = [math]::Round( ( ($TotalLogs - $AlertedEvents) / $TotalLogs * 100 ), 1 )
-    $PercentOfLogNoise = [math]::Round( ( $LogNoise / $TotalPiecesOfData * 100 ), 1 )
+    $LogEventDataReduction = 0
+
+    if ($TotalLogs -ne 0) {
+        $LogEventDataReduction = [math]::Round( ( ($TotalLogs - $AlertedEvents) / $TotalLogs * 100 ), 1 )
+    }
+
+    $PercentOfLogNoise = 0
+    if ($TotalPiecesOfData -ne 0) {
+        $PercentOfLogNoise = [math]::Round( ( $LogNoise / $TotalPiecesOfData * 100 ), 1 )
+    }
+
     $ProgramEndTime = Get-Date
     $TotalRuntime = [math]::Round(($ProgramEndTime - $ProgramStartTime).TotalSeconds)
 
