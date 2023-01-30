@@ -81,7 +81,7 @@ function Is-Logon-Dangerous ( $msgLogonType ) {
 }
 
 Function Format-FileSize {
-    Param ([int]$size)
+    Param ([Int64]$size)
     If ($size -gt 1TB) { [string]::Format("{0:0.00} TB", $size / 1TB) }
     ElseIf ($size -gt 1GB) { [string]::Format("{0:0.00} GB", $size / 1GB) }
     ElseIf ($size -gt 1MB) { [string]::Format("{0:0.00} MB", $size / 1MB) }
@@ -627,7 +627,7 @@ function Create-SecurityLogonTimeline {
 
         if ( $OutputCSV -eq $true ) {
 
-            $output | Export-Csv $SaveOutput
+            $output | Export-Csv $SaveOutput -Encoding UTF8
 
         }
         Else {
@@ -680,7 +680,7 @@ function Create-EasyToReadSecurityLogonTimeline {
     Write-Host
 
     try {
-        $logs = iex "Get-WinEvent $filter -Oldest -ErrorAction Stop"
+        $logs = Invoke-Expression "Get-WinEvent $filter -Oldest -ErrorAction SilentlyContinue"
 
     }
     catch {
@@ -1287,8 +1287,7 @@ function Create-EasyToReadSecurityLogonTimeline {
                 Else {
                     Write-Output "$timestamp $printMSG" | Out-File $SaveOutput -Append
                 }      
-            }   
-       
+            }
         }  
 
         #Logon using explicit credentials
@@ -1371,8 +1370,17 @@ function Create-EasyToReadSecurityLogonTimeline {
     }
 
     $GoodData = $TotalPiecesOfData - $LogNoise
-    $LogEventDataReduction = [math]::Round( ( ($TotalLogs - $AlertedEvents) / $TotalLogs * 100 ), 1 )
-    $PercentOfLogNoise = [math]::Round( ( $LogNoise / $TotalPiecesOfData * 100 ), 1 )
+    $LogEventDataReduction = 0
+
+    if ($TotalLogs -ne 0) {
+        $LogEventDataReduction = [math]::Round( ( ($TotalLogs - $AlertedEvents) / $TotalLogs * 100 ), 1 )
+    }
+
+    $PercentOfLogNoise = 0
+    if ($TotalPiecesOfData -ne 0) {
+        $PercentOfLogNoise = [math]::Round( ( $LogNoise / $TotalPiecesOfData * 100 ), 1 )
+    }
+
     $ProgramEndTime = Get-Date
     $TotalRuntime = [math]::Round(($ProgramEndTime - $ProgramStartTime).TotalSeconds)
 

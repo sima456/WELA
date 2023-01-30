@@ -511,6 +511,7 @@ $Show_Contributors2 =
 
 ogino(GitHub:@oginoPmP) - Developer
 DustInDark(GitHub:@hitenkoku) - Localization, Japanese Translations
+fukusuket
 Tsubokku(twitter: @ytsuboi0322) - Japanese Translations
 秀真（Hotsuma） - Calligraphy
 
