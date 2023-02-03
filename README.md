@@ -24,6 +24,9 @@ Tested on Windows Powershell 5.1 but may work with previous versions. It will un
 
 ## Features
 
+** Notes: **
+ The last SIGMA rule compliance in WELA is July 2021.If you want to use the latest SIGMA rules for evtx detection, please use [Hayabusa](https://github.com/Yamato-Security/hayabusa).**
+
  - Written in PowerShell so is easy to read and customize.
  - Fast Forensics Logon Timeline Generator
    - Detect lateral movement, system usage, suspicious logons, vulnerable protocol usage, etc...
@@ -102,7 +105,7 @@ You will need local Administrator access for live analysis.
 
 ### Analyze NTLM Operational logs for NTLM usage before disabling it:
 ```powershell
-.\WELA.ps1 -LogFile .\DC1-NTLM-Operational.evtx -AnalyzeNTLM_UsageBasic 
+.\WELA.ps1 -LogFile .\DC1-NTLM-Operational.evtx -AnalyzeNTLM_UsageBasic
 ```
 
 ### Security logon statistics on a live machine:
